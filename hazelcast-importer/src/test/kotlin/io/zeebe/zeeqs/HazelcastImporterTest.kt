@@ -19,12 +19,15 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.time.Duration
 import java.time.Instant
+import org.springframework.context.annotation.Import
+import io.zeebe.exporter.source.hazelcast.HazelcastSourceConfiguration
 
 @SpringBootTest
 @Testcontainers
-class HazelcastImporterTest(
-        @Autowired val importer: HazelcastImporter,
-        @Autowired val workflowRepository: WorkflowRepository) {
+@Import(HazelcastSourceConfiguration::class)
+class HazelcastImporterTest(@Autowired val workflowRepository: WorkflowRepository) {
+
+  // val port = zeebe.getMappedPort(hazelcastPort)
 
     val exporterJarPath: Path = Paths.get("../target/exporter/zeebe-hazelcast-exporter.jar")
     val containerPath = "/usr/local/zeebe/exporter/zeebe-hazelcast-exporter.jar"
@@ -45,9 +48,7 @@ class HazelcastImporterTest(
     @Test
     fun `should import workflow`() {
         // given
-        val port = zeebe.getMappedPort(hazelcastPort)
-        importer.start("localhost:$port", Duration.ofSeconds(10))
-
+        
         val client = ZeebeClient.newClientBuilder()
                 .brokerContactPoint(zeebe.getExternalAddress(ZeebePort.GATEWAY))
                 .usePlaintext()
