@@ -13,7 +13,7 @@
 
   <groupId>io.zeebe.zeeqs</groupId>
   <artifactId>zeeqs-root</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT-exporter-source-1</version>
   <name>ZeeQS - Root</name>
   <description>Query API for aggregated Zeebe data</description>
 
@@ -84,7 +84,7 @@
       <dependency>
         <groupId>io.zeebe</groupId>
         <artifactId>zeebe-exporter-source</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
       </dependency>
   
       <dependency>
@@ -336,9 +336,9 @@
 
   <repositories>
     <repository>
-      <id>zeebe</id>
-      <name>Zeebe Repository</name>
-      <url>https://app.camunda.com/nexus/content/repositories/zeebe-io/</url>
+      <id>drivenow.nexus</id>
+      <name>DriveNow Repository</name>
+      <url>https://nexus.drivenow.com.au/repository/public/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -348,9 +348,9 @@
     </repository>
 
     <repository>
-      <id>zeebe-snapshots</id>
+      <id>drivenow.nexus.snapshots</id>
       <name>Zeebe Snapshot Repository</name>
-      <url>https://app.camunda.com/nexus/content/repositories/zeebe-io-snapshots/</url>
+      <url>https://nexus.drivenow.com.au/repository/public-snapshots/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
